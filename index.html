@@ -3,111 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web2APK Pro - Advanced Website to APK</title>
+    <title>Web2APK - Website to APK Converter</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="logo">
-                <i class="fas fa-mobile-alt"></i>
-                <h1>Web2APK <span>PRO</span></h1>
-            </div>
-            <p>Professional Website → Android APK Converter</p>
+            <h1><i class="fas fa-mobile-android"></i> Web2APK</h1>
+            <p>Convert Website to Android APK Instantly</p>
         </header>
 
-        <main class="converter">
-            <div class="card">
-                <!-- Basic Info -->
+        <div class="converter-card" id="converter">
+            <div class="input-group">
+                <label>🌐 Website URL</label>
+                <input type="url" id="url" placeholder="https://example.com" value="">
+            </div>
+
+            <div class="row">
                 <div class="input-group">
-                    <label>🌐 Website URL</label>
-                    <input type="url" id="websiteUrl" placeholder="https://example.com" required>
+                    <label>📱 App Name</label>
+                    <input type="text" id="name" value="My App">
                 </div>
-
-                <!-- App Details -->
-                <div class="app-details-grid">
-                    <div class="input-group">
-                        <label>📱 App Name</label>
-                        <input type="text" id="appName" value="My Web App">
-                    </div>
-                    <div class="input-group">
-                        <label>📦 Package Name</label>
-                        <input type="text" id="packageName" value="com.myapp.web">
-                    </div>
+                <div class="input-group">
+                    <label>📦 Package</label>
+                    <input type="text" id="pkg" value="com.myapp.web">
                 </div>
-
-                <!-- Logo Upload -->
-                <div class="logo-upload">
-                    <label>🎨 App Logo (512x512 PNG)</label>
-                    <div class="upload-area" id="logoUpload">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <p>Click to upload logo or drag & drop</p>
-                        <input type="file" id="logoFile" accept="image/png,image/jpeg" hidden>
-                        <img id="logoPreview" src="assets/default-icon.png" alt="Logo Preview">
-                    </div>
-                </div>
-
-                <!-- Permissions -->
-                <div class="permissions">
-                    <h3>🔐 Permissions</h3>
-                    <label class="checkbox-item">
-                        <input type="checkbox" id="camera" checked> 📷 Camera
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" id="storage"> 💾 Storage
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" id="print" checked> 🖨️ Print
-                    </label>
-                    <label class="checkbox-item">
-                        <input type="checkbox" id="csv"> 📊 CSV Export
-                    </label>
-                </div>
-
-                <!-- Advanced Options -->
-                <div class="advanced-options">
-                    <label class="switch">
-                        <input type="checkbox" id="fullscreen"> Fullscreen
-                        <span class="slider"></span>
-                    </label>
-                    <label class="switch">
-                        <input type="checkbox" id="offline" checked> Offline Cache
-                        <span class="slider"></span>
-                    </label>
-                </div>
-
-                <!-- Generate Button -->
-                <button class="generate-btn" onclick="generateAPK()">
-                    <i class="fas fa-rocket"></i>
-                    <span>🚀 Generate Installable APK</span>
-                    <div class="progress" id="progress"></div>
-                </button>
             </div>
-        </main>
 
-        <!-- Success Section -->
-        <section class="success" id="successSection" style="display:none;">
-            <div class="success-card">
-                <i class="fas fa-check-circle"></i>
-                <h2>✅ APK Generated!</h2>
-                <p>Professional Android APK ready for installation</p>
-                <div class="download-area">
-                    <a href="#" class="download-btn" id="downloadBtn" download>
-                        <i class="fas fa-download"></i>
-                        📱 Download APK (18MB)
-                    </a>
-                    <div class="qr-container">
-                        <canvas id="qrCode"></canvas>
-                        <p>📱 Scan QR on Android</p>
-                    </div>
-                </div>
-                <button class="new-btn" onclick="newConversion()">➕ New APK</button>
-            </div>
-        </section>
+            <button class="btn-primary" onclick="createAPK()">
+                <i class="fas fa-rocket"></i> Generate APK
+            </button>
+        </div>
+
+        <div class="success-card" id="success" style="display:none;">
+            <i class="fas fa-check-circle"></i>
+            <h2>✅ APK Ready!</h2>
+            <a href="#" class="btn-download" id="download" download>📱 Download APK (15MB)</a>
+            <button class="btn-secondary" onclick="reset()">New APK</button>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
     <script src="script.js"></script>
 </body>
-                      </html>
+</html>
